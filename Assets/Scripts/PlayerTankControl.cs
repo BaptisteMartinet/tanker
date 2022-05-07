@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent (typeof(TankController))]
 public class PlayerTankControl : LivingEntity
 {
+    public GameObject sceneQuitterPrefab;
+
     TankController controller;
 
     public override void Start()
@@ -26,7 +28,7 @@ public class PlayerTankControl : LivingEntity
 
     private void OnDestroy()
     {
-        Application.Quit();
+        Instantiate(sceneQuitterPrefab);
     }
 
     #region Custom Methods
