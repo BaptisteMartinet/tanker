@@ -10,6 +10,8 @@ public class GunController : MonoBehaviour
     public float fireRate;
     public float casingForce;
 
+    public ParticleSystem muzzleFlashEffect;
+
     private float lastTime;
 
     public void Start()
@@ -26,6 +28,9 @@ public class GunController : MonoBehaviour
         Projectile newProjectile = Instantiate(projectile, bulletOrigin, transform.rotation);
         newProjectile.SetEmitter(emitter);
         newProjectile.SetSpeed(muzzleVelocity);
+
+        if (muzzleFlashEffect)
+            Instantiate(muzzleFlashEffect, bulletOrigin, transform.rotation);
 
         if (casing && casingOrigin)
         {

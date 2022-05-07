@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof(TankController))]
-public class PlayerTankControl : MonoBehaviour
+public class PlayerTankControl : LivingEntity
 {
     TankController controller;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         controller = GetComponent<TankController>();
     }
 
@@ -21,6 +22,11 @@ public class PlayerTankControl : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
+    }
+
+    private void OnDestroy()
+    {
+        Application.Quit();
     }
 
     #region Custom Methods

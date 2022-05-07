@@ -52,6 +52,7 @@ MonoBehaviour:
   muzzleVelocity: 20
   fireRate: 0.09
   casingForce: 150
+  muzzleFlashEffect: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
 --- !u!1 &3243371195386529033
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3657477792228659205}
   m_LocalRotation: {x: -0.000000021855694, y: 0.00000004371139, z: -1.016575e-15, w: 1}
-  m_LocalPosition: {x: -0.006, y: 0.255, z: 1.781}
+  m_LocalPosition: {x: -0.006, y: 0.255, z: 1.962}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6110328811495728772}
@@ -193,9 +194,10 @@ MonoBehaviour:
   casingOrigin: {fileID: 0}
   projectile: {fileID: 1577932423754239066, guid: ab08c8f8f1a7c3142aa62bd9d62d3da1, type: 3}
   casing: {fileID: 0}
-  muzzleVelocity: 100
+  muzzleVelocity: 25
   fireRate: 1
   casingForce: 0
+  muzzleFlashEffect: {fileID: 198000012944515248, guid: 90d0cfb7b54ef9a4680828329942493b, type: 3}
 --- !u!1 &4317191331607023926
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +486,7 @@ MonoBehaviour:
   turret: {fileID: 7959255750150524292}
   canon: {fileID: 252455121682672884}
   machineGun: {fileID: 2599842342056458261}
+  explosionEffect: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1 &7916753064420517464
 GameObject:
   m_ObjectHideFlags: 0

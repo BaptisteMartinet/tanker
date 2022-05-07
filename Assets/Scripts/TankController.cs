@@ -11,11 +11,50 @@ public class TankController : MonoBehaviour
     public GunController canon;
     public GunController machineGun;
 
+    public ParticleSystem explosionEffect;
+
     private Rigidbody rb;
+
+    private AudioManager audioManager;
+    private AudioSource idleSound;
+    private AudioSource movingSound;
+
+    private void Awake()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+        idleSound = audioManager.createSourceInstance("tank_idle", this.gameObject);
+        movingSound = audioManager.createSourceInstance("tank_move", this.gameObject);
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        idleSound.Play();
+    }
+
+    private void Update()
+    {
+        manageAudio();
+    }
+
+    private void OnDestroy()
+    {
+        audioManager.Play("tank_destruction");
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+    }
+
+    private void manageAudio()
+    {
+        if (rb.velocity.sqrMagnitude == 0 && !idleSound.isPlaying)
+        {
+            movingSound.Stop();
+            idleSound.Play();
+        }
+        else if (rb.velocity.sqrMagnitude > 0 && !movingSound.isPlaying)
+        {
+            idleSound.Stop();
+            movingSound.Play();
+        }
     }
 
     #region Custom Methods
@@ -38,12 +77,12 @@ public class TankController : MonoBehaviour
 
     public void Shoot_Cannon()
     {
-        canon.Shoot(this.gameObject);
+        canon?.Shoot(this.gameObject);
     }
 
     public void Shoot_MachineGun()
     {
-        machineGun.Shoot(this.gameObject);
+        machineGun?.Shoot(this.gameObject);
     }
     #endregion Custom Methods
 }

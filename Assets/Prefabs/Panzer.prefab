@@ -139,11 +139,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleNoze: {fileID: 0}
   casingOrigin: {fileID: 0}
-  projectile: {fileID: 1577932423754239066, guid: 816641008abbd684897d8ad30fde9df8, type: 3}
+  projectile: {fileID: 1577932423754239066, guid: ab08c8f8f1a7c3142aa62bd9d62d3da1, type: 3}
   casing: {fileID: 0}
-  muzzleVelocity: 100
-  fireRate: 1
+  muzzleVelocity: 15
+  fireRate: 3
   casingForce: 0
+  muzzleFlashEffect: {fileID: 198000012944515248, guid: 90d0cfb7b54ef9a4680828329942493b, type: 3}
 --- !u!1 &5604531344729497695
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +253,7 @@ GameObject:
   - component: {fileID: 3533172020043145970}
   - component: {fileID: 7797133896450294909}
   - component: {fileID: 559769246030022478}
+  - component: {fileID: -1557516497274521175}
   m_Layer: 0
   m_Name: Panzer
   m_TagString: Untagged
@@ -352,8 +354,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7513633, y: 1.9225135, z: 6.3558555}
-  m_Center: {x: 0.000001013279, y: 1.0426204, z: -0.18787003}
+  m_Size: {x: 3.7513633, y: 2.5, z: 6.3558555}
+  m_Center: {x: 0.000001013279, y: 1.25, z: -0.18787003}
 --- !u!114 &559769246030022478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,12 +368,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd42aebe5e5c7e4bb6dba61fdaade7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankSpeed: 8
-  rotationSpeed: 4
-  turretRotationSpeed: 5
+  tankSpeed: 2
+  rotationSpeed: 2
+  turretRotationSpeed: 3
   turret: {fileID: 7485255823719610542}
-  canon: {fileID: 0}
+  canon: {fileID: 7047869106644072050}
   machineGun: {fileID: 0}
+  explosionEffect: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+--- !u!114 &-1557516497274521175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462417447010335875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ec7b5c3465c904dbb59a3a083941b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 500
+  moveDistance: 50
+  attackDistance: 30
 --- !u!1 &7167266872622364264
 GameObject:
   m_ObjectHideFlags: 0

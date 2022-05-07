@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public float damage;
     public float timeBeforeSelfDestruct;
     private float speed;
     private GameObject emitter;
@@ -21,13 +22,32 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        float moveDistance = Time.deltaTime * speed;
+        transform.Translate(Vector3.forward * moveDistance);
+        CheckCollision(moveDistance);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void CheckCollision(float moveDistance)
     {
-        Explode();
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, moveDistance))
+        {
+            IDamageable damageableObject = hit.collider.gameObject.GetComponent<IDamageable>();
+            if (damageableObject != null)
+                damageableObject.TakeHit(damage);
+            Explode();
+        }
+
     }
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
+        if (damageableObject != null)
+            damageableObject.TakeHit(damage);
+        Explode();
+    }*/
 
     IEnumerator SelfDestruct(float seconds)
     {
